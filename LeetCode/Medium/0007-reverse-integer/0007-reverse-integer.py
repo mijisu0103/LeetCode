@@ -1,26 +1,12 @@
 class Solution:
     def reverse(self, x: int) -> int:
-        import math
-        digit = 0
-        Negative = False
-
-        if x < 0:
-            x = -x
-            Negative = True
-
-        num = str(x)
-
-        if Negative:
-            num = num[0:]
-
-        result = ""
-        for i in num:
-            result = i + result
-
-        if Negative:
-            result = '-' + result
-
-        result = int(result)
+        sign = [1, -1][x < 0]
+        rev, x = 0, abs(x)
         
-        if result >= 2**31-1 or result <= -2**31 : return 0
-        else :  return result
+        while x:
+            x, mod = divmod(x, 10)
+            rev = rev * 10 + mod
+            if rev > 2**31 - 1:
+                return 0
+        
+        return sign * rev
