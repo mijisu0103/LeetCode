@@ -1,9 +1,7 @@
-class Solution:
-    def getConcatenation(self, nums: List[int]) -> List[int]:
-        n = len(nums)
-        ans = [0] * (2 * n)
-        for i, num in enumerate(nums):
-            ans[i] = ans[i + n] = num
-        return ans
-
-        
+class Solution(object):
+    def getConcatenation(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[int]
+        """
+        return nums * 2
